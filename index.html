@@ -27,15 +27,38 @@
   <!-- 파비콘 -->
   <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
   <!-- css reset -->
-  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/normalize.css"> <!-- 노말리즈 -->
   <!-- swiper css -->
   <link rel="stylesheet" href="./css/swiper-bundle.min.css">
 
   <style>
+    /*===== 모바일모드 =====*/
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-    *{
-      font-family: 'Roboto','Noto Sans KR', sans-serif;
+    *{font-family: 'Roboto','Noto Sans KR', sans-serif; box-sizing: border-box;}
+
+    a{text-decoration: none;}
+    a:hover{text-decoration: underline;}
+    img{vertical-align: top;}
+    ul,ol,li{list-style: none;}
+    .clearfix::after{content: ''; display: block; clear: both;}
+    .f_left{float: left;}
+    .f_right{float: right;}
+
+    .container{width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px;}
+    .content{padding: 40px 0;}
+
+
+    /*===== 테블릿모드 =====*/
+    @media(min-width: 768px){
+      .container{width: 80%;}
+      .content{padding: 50px 0;}
+
+    }
+
+    /*===== 피씨모드 =====*/
+    @media(min-width: 1200px){
+      .content{padding: 60px 0;}
     }
 
 
@@ -43,7 +66,23 @@
 
 </head>
 <body>
-  
+  <section class="skip_menu">
+    <a href="#">본문바로가기</a>
+    <a href="#">푸터바로가기</a>
+  </section>
+  <section class="wrap">
+    <section class="banner01"></section>
+    <header class="header"></header>
+    <section class="section box_office"></section>
+    <section class="section event"></section>
+    <section class="section curation"></section>
+    <section class="section mega_info"></section>
+    <section class="section banner03"></section>
+    <footer class="footer"></footer>
+  </section>
+
+
+
 
   <!-- 스크립트 -->
   <!-- jquery -->
