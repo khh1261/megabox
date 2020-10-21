@@ -35,7 +35,7 @@
     /*===== 모바일모드 =====*/
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-    *{font-family: 'Roboto','Noto Sans KR', sans-serif; box-sizing: border-box;}
+    *{margin: 0; padding: 0; font-family: 'Roboto','Noto Sans KR', sans-serif; box-sizing: border-box;}
 
     a{text-decoration: none;}
     a:hover{text-decoration: underline;}
@@ -45,12 +45,15 @@
     .f_left{float: left;}
     .f_right{float: right;}
 
+
     .container{width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px;}
     .content{padding: 40px 0;}
+
 
     .skip_menu{position: fixed; left: 0; top: -999999px; z-index: 1; width: 100%;padding: 10px; background-color: #503396; text-align: center;}
     .skip_menu.active{top: 0;}
     .skip_menu>a{display: inline-block; border: 2px solid #fff; border-radius: 3px; padding: 6px 10px; color: #fff;}
+
 
     .popup{position:fixed; width:100vw; height:100vh; z-index:2; background-color:rgba(0,0,0,0.8); display: none;}
     .popup_content{width:400px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);}
@@ -60,6 +63,7 @@
 
     .banner01, .banner03{background-color: #4f79a9; display: none;}
 
+
     header{width: 100%; background-color: rgba(0,0,0,0.8); position: fixed;}
     header .content{padding: 20px;}
     .header_main{display: flex; justify-content: space-between; align-items: center;}
@@ -67,11 +71,24 @@
     .logo_box{width: 120px;}
     .buger_box{width: 25px; cursor: pointer;}
 
+
+    nav{position: fixed; right: 0; top: 0; z-index: 11; width: 300px; height: 100vh; background-color: #fff; overflow: hidden;}
+    .nav_top{background-color: #160f2b;}
+    .login, .join{padding: 20px; border-bottom: 1px solid rgba(151,151,151,.24); color: #fff;}
+    .login p{padding-top: 4px;}
+    .login a{color: #fff; font-weight: bolder; text-decoration: underline;}
+    .nav_close{width: 25px;}
+    .join a{color: #fff;}
+    .join img{width: 15px;}
+
+
     .box_office{height: 500px; background-color: green;}
     .event{height: 500px; background-color: blue;}
     .curation{height: 500px; background-color: yellow;}
     .mega_info{height: 500px; background-color: magenta;}
     footer{background-color: gray; position: fixed; left: 0; bottom: 0; z-index: 10; width: 100%;}
+
+
 
 
     /*===== 테블릿모드 =====*/
@@ -148,19 +165,66 @@
             <article class="nav_top">
               <div class="login clearfix">
                 <p class="f_left">
-                  <a href="#">로그인</a>후 이용하세요!
+                  <a href="#">로그인</a> 후 이용하세요!
                 </p>
                 <div class="nav_close f_right">
                   <img src="./images/rnb-close.png" alt="네비 닫기">
                 </div>
               </div>
               <div class="join clearfix">
-                <p class="f_left">회원가입</p>
-                <p class="f_right">비회원 예매확인</p>
+                <p class="f_left">
+                  <a href="#">
+                    <img src="./images/rnb-join.png" alt="">
+                    회원가입
+                  </a>
+                </p>
+                <p class="f_right">
+                  <a href="#">
+                    <img src="./images/rnb-ticketing.png" alt="">
+                    비회원 예매확인
+                  </a>
+                </p>
               </div>
             </article>
             <article class="nav_main">
-
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="./images/rnb-movie.png" alt="">
+                    <p>영화별예매</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="./images/rnb-theater.png" alt="">
+                    <p>극장별예매</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="./images/rnb-mymega.png" alt="">
+                    <p>나의메가박스</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="./images/rnb-post.png" alt="">
+                    <p>영화</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="./images/rnb-store.png" alt="">
+                    <p>스토어</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="./images/rnb-event.png" alt="">
+                    <p>이벤트</p>
+                  </a>
+                </li>
+              </ul>
             </article>
             <article class="nav_list">
 
@@ -241,7 +305,13 @@
       confirm('로그인 후 이용이 가능합니다. \n 로그인 후 사용가능합니다.');
     })
 
-
+    // === 네비호출 / 닫기 === //
+    $('.buger_box').on('click',function(){
+      $('nav').show();
+    })
+    $('.nav_close').on('click',function(){
+      $('nav').hide();
+    })
 
 
   })
