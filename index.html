@@ -52,7 +52,7 @@
     .skip_menu.active{top: 0;}
     .skip_menu>a{display: inline-block; border: 2px solid #fff; border-radius: 3px; padding: 6px 10px; color: #fff;}
 
-    .popup{position:fixed; width:100vw; height:100vh; z-index:2; background-color:rgba(0,0,0,0.8);}
+    .popup{position:fixed; width:100vw; height:100vh; z-index:2; background-color:rgba(0,0,0,0.8); display: none;}
     .popup_content{width:400px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);}
     .popup_form{padding:10px; background-color:#fff;}
     #popup_close{cursor:pointer;}
@@ -78,6 +78,7 @@
     /*===== 피씨모드 =====*/
     @media(min-width: 1200px){
       .content{padding: 60px 0;}
+    
     }
 
 
@@ -137,6 +138,8 @@
   <script src="./js/swiper-bundle.min.js"></script>
   <!-- prefixfree -->
   <script src="./js/prefixfree.min.js"></script>
+  <!-- jquery-cookie -->
+  <script src="./js/jquery.cookie.min.js"></script>
 
 
   <script>
@@ -157,8 +160,17 @@
 
       //=== 팝업 ===//
       $('#popup_close').on('click',function(){
+        if($('#day3_close').is(':checked')){
+          $.cookie('none_popup', 'yes', { expires: 3, path: '/' });
+        }
         $('.popup').hide();
       })
+
+      if($.cookie('non_popup')=='yes'){
+        $('.popup').hide();
+      }else{
+        $('.popup').show();
+      }
 
     })
   </script>
