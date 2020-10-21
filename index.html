@@ -58,27 +58,35 @@
     #popup_close{cursor:pointer;}
 
 
-    .banner01,.banner03{background-color: #4f79a9; display: none;}
-    header{height: 200px; background-color: #000;}
+    .banner01, .banner03{background-color: #4f79a9; display: none;}
+
+    header{width: 100%; background-color: rgba(0,0,0,0.8); position: fixed;}
+    header .content{padding: 20px;}
+    .header_main{display: flex; justify-content: space-between; align-items: center;}
+    .ticket_box{width: 30px; cursor: pointer;}
+    .logo_box{width: 120px;}
+    .buger_box{width: 25px; cursor: pointer;}
+
     .box_office{height: 500px; background-color: green;}
     .event{height: 500px; background-color: blue;}
     .curation{height: 500px; background-color: yellow;}
     .mega_info{height: 500px; background-color: magenta;}
-    footer{height: 100px; background-color: gray;}
+    footer{background-color: gray; position: fixed; left: 0; bottom: 0; z-index: 10; width: 100%;}
 
 
     /*===== 테블릿모드 =====*/
     @media(min-width: 768px){
       .container{width: 80%;}
       .content{padding: 50px 0;}
-      .banner01,.banner03{display: block;}
+      .banner01, .banner03{display: block;}
+      header{position: sticky;}
 
     }
 
     /*===== 피씨모드 =====*/
     @media(min-width: 1200px){
       .content{padding: 60px 0;}
-    
+      header, footer{position: sticky;}
     }
 
 
@@ -86,13 +94,13 @@
 
 </head>
 <body>
-  <!-- 스킵메뉴 -->
+  <!-- 스킵메뉴 영역 -->
   <section class="skip_menu">
     <a href="#box_office">본문바로가기</a>
     <a href="#footer">푸터바로가기</a>
   </section>
   <section class="wrap">
-    <!-- 팝업 -->
+    <!-- 팝업 영역 -->
     <scetion class="popup">
       <article class="popup_content">
         <div class="popup_img">
@@ -109,13 +117,61 @@
         </div>
       </article>
     </scetion>
-    
+    <!-- 배너 영역 -->
     <section class="banner01">
       <div class="container">
         <img src="./images/hyundea_1.jpg" alt="현대화재 배너01">
       </div>
     </section>
-    <header class="header"></header>
+    <!-- 헤더 영역 -->
+    <header class="header">
+      <div class="container">
+        <div class="content">
+          <div class="header_main">
+            <div class="ticket_box">
+              <a href="#">
+                <img src="./images/ticket-w.png" alt="티켓">
+              </a>
+            </div>
+            <div class="logo_box">
+              <a href="index.html">
+              <img src="./images/logo-white (1).png" alt="로고">
+            </a>
+            </div>
+            <div class="buger_box">
+              <a href="#">
+                <img src="./images/buger-white.png" alt="토글버튼">
+              </a>
+            </div>
+          </div>
+          <nav>
+            <article class="nav_top">
+              <div class="login clearfix">
+                <p class="f_left">
+                  <a href="#">로그인</a>후 이용하세요!
+                </p>
+                <div class="nav_close f_right">
+                  <img src="./images/rnb-close.png" alt="네비 닫기">
+                </div>
+              </div>
+              <div class="join clearfix">
+                <p class="f_left">회원가입</p>
+                <p class="f_right">비회원 예매확인</p>
+              </div>
+            </article>
+            <article class="nav_main">
+
+            </article>
+            <article class="nav_list">
+
+            </article>
+            <article class="nav_banner">
+
+            </article>
+          </nav>
+        </div>
+      </div>
+    </header>
     <section class="section box_office" id="box_office"></section>
     <section class="section event"></section>
     <section class="section curation"></section>
@@ -125,7 +181,14 @@
         <img src="./images/hyundea_3.jpg" alt="현대화재 배너03">
       </div>
     </section>
-    <footer class="footer" id="footer"></footer>
+    <!-- 푸터 영역 -->
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="content">
+          footer
+        </div>
+      </div>
+    </footer>
   </section>
 
 
@@ -144,35 +207,45 @@
 
   <script>
 
-    $(function(){
-      //=== 스킵메뉴 ===//
-      var skip = $('.skip_menu a');
-      var skipMenu = $('.skip_menu');
+  $(function(){
+    // === 스킵메뉴 === //
+    var skip=$('.skip_menu a');
+    var skipMenu=$('.skip_menu');
 
-      skip.on({
-        focus:function(){
-          skipMenu.addClass('active');
-        },
-        blur:function(){
-          skipMenu.removeClass('active');
-        }
-      });
-
-      //=== 팝업 ===//
-      $('#popup_close').on('click',function(){
-        if($('#day3_close').is(':checked')){
-          $.cookie('none_popup', 'yes', { expires: 3, path: '/' });
-        }
-        $('.popup').hide();
-      })
-
-      if($.cookie('non_popup')=='yes'){
-        $('.popup').hide();
-      }else{
-        $('.popup').show();
+    skip.on({
+      focus:function(){
+        skipMenu.addClass('active');
+      },
+      blur:function(){
+        skipMenu.removeClass('active');
       }
+    });
 
+    // === 팝업 === //
+    $('#popup_close').on('click',function(){
+      if($('#day3_close').is(':checked')){
+        $.cookie('non_popup', 'yes', { expires: 3, path: '/' });
+      }
+      $('.popup').hide();
+    });
+
+    if($.cookie('non_popup')=='yes'){
+      $('.popup').hide();
+    }else{
+      $('.popup').show();
+    }
+
+
+    // === 티켓클릭 === //
+    $('.ticket_box').on('click',function(){
+      confirm('로그인 후 이용이 가능합니다. \n 로그인 후 사용가능합니다.');
     })
+
+
+
+
+  })
+
   </script>
 </body>
 </html>
