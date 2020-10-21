@@ -39,7 +39,7 @@
 
     a{text-decoration: none;}
     a:hover{text-decoration: underline;}
-    img{vertical-align: top;}
+    img{vertical-align: top; width: 100%;}
     ul,ol,li{list-style: none;}
     .clearfix::after{content: ''; display: block; clear: both;}
     .f_left{float: left;}
@@ -48,11 +48,30 @@
     .container{width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px;}
     .content{padding: 40px 0;}
 
+    .skip_menu{position: fixed; left: 0; top: -999999px; z-index: 1; width: 100%;padding: 10px; background-color: #503396; text-align: center;}
+    .skip_menu.active{top: 0;}
+    .skip_menu>a{display: inline-block; border: 2px solid #fff; border-radius: 3px; padding: 6px 10px; color: #fff;}
+
+    .popup{position:fixed; width:100vw; height:100vh; z-index:2; background-color:rgba(0,0,0,0.8);}
+    .popup_content{width:400px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);}
+    .popup_form{padding:10px; background-color:#fff;}
+    #popup_close{cursor:pointer;}
+
+
+    .banner01,.banner03{background-color: #4f79a9; display: none;}
+    header{height: 200px; background-color: #000;}
+    .box_office{height: 500px; background-color: green;}
+    .event{height: 500px; background-color: blue;}
+    .curation{height: 500px; background-color: yellow;}
+    .mega_info{height: 500px; background-color: magenta;}
+    footer{height: 100px; background-color: gray;}
+
 
     /*===== 테블릿모드 =====*/
     @media(min-width: 768px){
       .container{width: 80%;}
       .content{padding: 50px 0;}
+      .banner01,.banner03{display: block;}
 
     }
 
@@ -66,19 +85,46 @@
 
 </head>
 <body>
+  <!-- 스킵메뉴 -->
   <section class="skip_menu">
-    <a href="#">본문바로가기</a>
-    <a href="#">푸터바로가기</a>
+    <a href="#box_office">본문바로가기</a>
+    <a href="#footer">푸터바로가기</a>
   </section>
   <section class="wrap">
-    <section class="banner01"></section>
+    <!-- 팝업 -->
+    <scetion class="popup">
+      <article class="popup_content">
+        <div class="popup_img">
+          <img src="./images/popup_img.jpg" alt="팝업이미지">
+        </div>
+        <div class="popup_form clearfix">
+          <div class="f_left">
+            <input type="checkbox" id="day3_close">
+            <label for="day3_close">3일동안 열지않기</label>
+          </div>
+          <div class="f_right">
+            <img id="popup_close" src="./images/btn-close.png" alt="팝업 닫기">
+          </div>
+        </div>
+      </article>
+    </scetion>
+    
+    <section class="banner01">
+      <div class="container">
+        <img src="./images/hyundea_1.jpg" alt="현대화재 배너01">
+      </div>
+    </section>
     <header class="header"></header>
-    <section class="section box_office"></section>
+    <section class="section box_office" id="box_office"></section>
     <section class="section event"></section>
     <section class="section curation"></section>
     <section class="section mega_info"></section>
-    <section class="section banner03"></section>
-    <footer class="footer"></footer>
+    <section class="section banner03">
+      <div class="container">
+        <img src="./images/hyundea_3.jpg" alt="현대화재 배너03">
+      </div>
+    </section>
+    <footer class="footer" id="footer"></footer>
   </section>
 
 
@@ -91,5 +137,30 @@
   <script src="./js/swiper-bundle.min.js"></script>
   <!-- prefixfree -->
   <script src="./js/prefixfree.min.js"></script>
+
+
+  <script>
+
+    $(function(){
+      //=== 스킵메뉴 ===//
+      var skip = $('.skip_menu a');
+      var skipMenu = $('.skip_menu');
+
+      skip.on({
+        focus:function(){
+          skipMenu.addClass('active');
+        },
+        blur:function(){
+          skipMenu.removeClass('active');
+        }
+      });
+
+      //=== 팝업 ===//
+      $('#popup_close').on('click',function(){
+        $('.popup').hide();
+      })
+
+    })
+  </script>
 </body>
 </html>
