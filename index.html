@@ -44,6 +44,7 @@
     .clearfix::after{content: ''; display: block; clear: both;}
     .f_left{float: left;}
     .f_right{float: right;}
+    html, body{height: 100%;}
 
 
     .container{width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px;}
@@ -64,29 +65,38 @@
     .banner01, .banner03{background-color: #4f79a9; display: none;}
 
 
-    header{width: 100%; background-color: rgba(0,0,0,0.8); position: fixed;}
+    header{width: 100%; background-color: rgba(0,0,0,0); transition: 0.3s; position: fixed; z-index: 1;}
     header .content{padding: 20px;}
+    header.active{background-color: rgba(0,0,0,0.9);}
     .header_main{display: flex; justify-content: space-between; align-items: center;}
     .ticket_box{width: 30px; cursor: pointer;}
     .logo_box{width: 120px;}
     .buger_box{width: 25px; cursor: pointer;}
 
 
-    nav{position: fixed; right: 0; top: 0; z-index: 11; width: 300px; height: 100vh; background-color: #fff; overflow: hidden;}
+    nav{position: fixed; right: 0; top: 0; z-index: 11; width: 300px; height: 100vh; background-color: #fff;}
     .nav_top{background-color: #160f2b;}
     .login, .join{padding: 20px; border-bottom: 1px solid rgba(151,151,151,.24); color: #fff;}
-    .login p{padding-top: 4px;}
     .login a{color: #fff; font-weight: bolder; text-decoration: underline;}
+    .login p{padding-top: 4px;}
     .nav_close{width: 25px;}
     .join a{color: #fff;}
     .join img{width: 15px;}
+    .nav_main{padding: 20px;}
+    .main_nav{height: 200px; margin-bottom: 40px; display: flex; flex-flow: row wrap; justify-content: space-between; align-content: space-between;}
+    .main_nav li{width: 32%; text-align: center;}
+    .main_nav img{border: 1px solid #e0e0e0; border-radius: 50%; width: 75%;}
+    .main_nav p{font-size: 0.9rem; padding-top: 10px; color: #444;}
+    .sub_nav li{border-top:1px solid #f5f5f5; padding:16px 0;}
+    .sub_nav li:last-child{border-bottom:1px #f5f5f5;}
+    .sub_nav li a{color:#333;}
 
 
     .box_office{height: 500px; background-color: green;}
     .event{height: 500px; background-color: blue;}
     .curation{height: 500px; background-color: yellow;}
     .mega_info{height: 500px; background-color: magenta;}
-    footer{background-color: gray; position: fixed; left: 0; bottom: 0; z-index: 10; width: 100%;}
+    footer{background-color: gray; position: fixed; left: 0; bottom: 0; z-index: 0; width: 100%;}
 
 
 
@@ -187,7 +197,7 @@
               </div>
             </article>
             <article class="nav_main">
-              <ul>
+              <ul class="main_nav">
                 <li>
                   <a href="#">
                     <img src="./images/rnb-movie.png" alt="">
@@ -225,9 +235,14 @@
                   </a>
                 </li>
               </ul>
-            </article>
-            <article class="nav_list">
-
+              <ul class="sub_nav">
+                <li><a href="#">극장안내</a></li>
+                <li><a href="#">무비포스트</a></li>
+                <li><a href="#">더 부티크 프라이빗 예매</a></li>
+                <li><a href="#">제휴/할인 안내</a></li>
+                <li><a href="#">멤버십안내</a></li>
+                <li><a href="#">고객센터</a></li>
+              </ul>
             </article>
             <article class="nav_banner">
 
@@ -305,6 +320,7 @@
       confirm('로그인 후 이용이 가능합니다. \n 로그인 후 사용가능합니다.');
     })
 
+
     // === 네비호출 / 닫기 === //
     $('.buger_box').on('click',function(){
       $('nav').show();
@@ -312,6 +328,19 @@
     $('.nav_close').on('click',function(){
       $('nav').hide();
     })
+
+
+    // 윈도우 스크롤 이벤트 //
+    $(window).on('scroll',function(){
+      var scrTop = $(window).scrollTop();
+      var hrd = $('.header')
+      if(scrTop>0){
+        hrd.addClass('active');
+      }else{
+        hrd.removeClass('active');
+      };
+    })
+
 
 
   })
