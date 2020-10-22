@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+
+  <!-- /////////////////////// -->
+  <script>
+    var scrWidth = screen.Width;
+    console.log(scrWidth);
+    if(scrWidth>=1200){
+      location.replace('pc.html');
+    }
+  </script>
+  <!-- /////////////////////// -->
+
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- 오픈그래픽 -->
@@ -70,6 +82,7 @@
     .header .content{padding: 20px;}
     .header.active{background-color: rgba(0,0,0,0.9);}
     .header_main{display: flex; justify-content: space-between; align-items: center;}
+    .before{width: 100%; height: 100%; position: fixed; left: 0; top: 0; z-index: 10; background-color:  rgba(0,0,0,0.8); display: none;}
     .ticket_box{width: 30px; cursor: pointer;}
     .logo_box{width: 120px;}
     .buger_box{width: 25px; cursor: pointer;}
@@ -117,32 +130,6 @@
 
     }
 
-    /*===== 피씨모드 =====*/
-    @media(min-width: 1200px){
-      .content{padding: 60px 0;}
-      .header, .footer{position: static;}
-      .header{background-color: #111;;}
-      .header.active{background-color: #111;}
-
-      .logo_box{width: 140px;}
-      .ticket_box,.buger_box{display: none;}
-      .header_main{justify-content: center;}
-      .header .container{position: relative;}
-      
-      nav{position: absolute; width: 100%; background-color: transparent;}
-      .nav_top{right: 0; left: auto; top: -10px; width: auto; background-color: transparent; display: flex;}
-      .login{width: 66px; height: 40px; padding: 17px 10px; overflow: hidden;}
-      .login,.join{border-bottom: none;}
-      .join{width: 236px;}
-      .join img{display: none;}
-      .nav_close{display: none;}
-      .nav_top a{color: #fff}
-      
-
-
-
-    }
-
 
   </style>
 
@@ -182,6 +169,7 @@
       <div class="container">
         <div class="content">
           <div class="header_main">
+            <div class="before"></div>
             <div class="ticket_box">
               <a href="#">
                 <img src="./images/ticket-w.png" alt="티켓">
@@ -352,10 +340,12 @@
     $('.buger_box').on('click',function(){
       $('nav').css('width',300);
       $('html,body').addClass('not_scroll');
+      $('.before').show();
     })
     $('.nav_close').on('click',function(){
       $('nav').css('width',0);
       $('html,body').removeClass('not_scroll');
+      $('.before').hide();
     })
 
 
