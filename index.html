@@ -128,7 +128,9 @@
 
 
   /* 박스오피스 */
-    .box_office{background-color: green;}
+    .box_office{position: relative;}
+    .box_office::before{content: ''; display: block; width: 100%; height: 100%; background-image: url('./images/bg-origin.png'); background-size: cover; position: absolute; left: 0; top: 0; z-index: 10;}
+    .box_office .container{position: relative; z-index: 11;}
 
     .event{height: 500px; background-color: blue;}
     .curation{height: 500px; background-color: yellow;}
@@ -285,7 +287,51 @@
     <section class="section box_office" id="box_office">
       <div class="container">
         <div class="content">
+          <h2 class="title01">
+            선명한 화면과 섬세한 소리로<br>당신께 최고의 영화를
+          </h2>
+          <ul class="hastag">
+            <li><a href="#" class="con_txt03">#박스오피스</a></li>
+            <li><a href="#" class="con_txt03">#상영예정</a></li>
+            <li><a href="#" class="con_txt03">#돌비시네마</a></li>
+            <li><a href="#" class="con_txt03">#단독</a></li>
+            <li><a href="#" class="con_txt03">#오리지널티켓</a></li>
+            <li><a href="#" class="con_txt03">#빵원티켓+</a></li>
+            <li><a href="#" class="con_txt03">#클소</a></li>
+            <li><a href="#" class="con_txt03">#필소</a></li>
+          </ul>
+          <div class="swiper_container">
+            <!-- <div class="swiper-wrapper">
+              <div class="swiper-slide">1</div>
+              <div class="swiper-slide">2</div>
+              <div class="swiper-slide">3</div>
+              <div class="swiper-slide">4</div>
+              <div class="swiper-slide">5</div>
+              <div class="swiper-slide">6</div>
+              <div class="swiper-slide">7</div>
+              <div class="swiper-slide">8</div>
+              <div class="swiper-slide">9</div>
+              <div class="swiper-slide">10</div>
+              <div class="swiper-slide">11</div>
+              <div class="swiper-slide">12</div>
+              <div class="swiper-slide">13</div>
+              <div class="swiper-slide">14</div>
+              <div class="swiper-slide">15</div>
+              <div class="swiper-slide">16</div>
+              <div class="swiper-slide">17</div>
+              <div class="swiper-slide">18</div>
+              <div class="swiper-slide">19</div>
+              <div class="swiper-slide">20</div>
+              
 
+            </div> -->
+          </div>
+          <p class="con_txt_04">
+            더 많은 영화보기
+            <div class="arr_box">
+              <img src="./images/arr-right-gray.png" alt="">
+            </div>
+          </p>
         </div>
       </div>
     </section>
@@ -381,6 +427,9 @@
         hrd.removeClass('active');
       };
     })
+
+    
+    var swiper = new swiper('swiper_container');
 
 
 
