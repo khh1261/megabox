@@ -45,6 +45,7 @@
     .f_left{float: left;}
     .f_right{float: right;}
     html, body{height: 100%;}
+    .not_scroll{width: 100%; overflow: hidden;}
 
 
     .container{width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px;}
@@ -65,38 +66,46 @@
     .banner01, .banner03{background-color: #4f79a9; display: none;}
 
 
-    header{width: 100%; background-color: rgba(0,0,0,0); transition: 0.3s; position: fixed; z-index: 1;}
-    header .content{padding: 20px;}
-    header.active{background-color: rgba(0,0,0,0.9);}
+    .header{width: 100%; background-color: rgba(0,0,0,0); transition: 0.3s; position: fixed; z-index: 1;}
+    .header .content{padding: 20px;}
+    .header.active{background-color: rgba(0,0,0,0.9);}
     .header_main{display: flex; justify-content: space-between; align-items: center;}
     .ticket_box{width: 30px; cursor: pointer;}
     .logo_box{width: 120px;}
     .buger_box{width: 25px; cursor: pointer;}
 
 
-    nav{position: fixed; right: 0; top: 0; z-index: 11; width: 300px; height: 100vh; background-color: #fff;}
-    .nav_top{background-color: #160f2b;}
+    nav{position: fixed; right: 0; top: 0; z-index: 11; width: 0; height: 100vh; background-color: #fff;}
+    
+    .nav_top{background-color: #160f2b; position: absolute; left: 0; top: 0; z-index: 12; width: 100%;}
     .login, .join{padding: 20px; border-bottom: 1px solid rgba(151,151,151,.24); color: #fff;}
     .login a{color: #fff; font-weight: bolder; text-decoration: underline;}
     .login p{padding-top: 4px;}
     .nav_close{width: 25px;}
     .join a{color: #fff;}
     .join img{width: 15px;}
-    .nav_main{padding: 20px;}
+    
+    .nav_main{padding: 148px 20px 20px; height: 100%; overflow-y: scroll;}
+    .nav_main::-webkit-scrollbar,html::-webkit-scrollbar,body::-webkit-scrollbar{display: none;}
+    .nav_main,html,body{-ms-overflow-style: none;}
+
     .main_nav{height: 200px; margin-bottom: 40px; display: flex; flex-flow: row wrap; justify-content: space-between; align-content: space-between;}
     .main_nav li{width: 32%; text-align: center;}
     .main_nav img{border: 1px solid #e0e0e0; border-radius: 50%; width: 75%;}
     .main_nav p{font-size: 0.9rem; padding-top: 10px; color: #444;}
+
     .sub_nav li{border-top:1px solid #f5f5f5; padding:16px 0;}
     .sub_nav li:last-child{border-bottom:1px #f5f5f5;}
     .sub_nav li a{color:#333;}
+    
+    .nav_banner{position: absolute; left: 0; bottom: 0; z-index: 12; width: 100%;}
 
 
     .box_office{height: 500px; background-color: green;}
     .event{height: 500px; background-color: blue;}
     .curation{height: 500px; background-color: yellow;}
     .mega_info{height: 500px; background-color: magenta;}
-    footer{background-color: gray; position: fixed; left: 0; bottom: 0; z-index: 0; width: 100%;}
+    .footer{background-color: gray; position: fixed; left: 0; bottom: 0; z-index: 0; width: 100%;}
 
 
 
@@ -105,15 +114,33 @@
     @media(min-width: 768px){
       .container{width: 80%;}
       .content{padding: 50px 0;}
-      .banner01, .banner03{display: block;}
-      header{position: sticky;}
 
     }
 
     /*===== 피씨모드 =====*/
     @media(min-width: 1200px){
       .content{padding: 60px 0;}
-      header, footer{position: sticky;}
+      .header, .footer{position: static;}
+      .header{background-color: #111;;}
+      .header.active{background-color: #111;}
+
+      .logo_box{width: 140px;}
+      .ticket_box,.buger_box{display: none;}
+      .header_main{justify-content: center;}
+      .header .container{position: relative;}
+      
+      nav{position: absolute; width: 100%; background-color: transparent;}
+      .nav_top{right: 0; left: auto; top: -10px; width: auto; background-color: transparent; display: flex;}
+      .login{width: 66px; height: 40px; padding: 17px 10px; overflow: hidden;}
+      .login,.join{border-bottom: none;}
+      .join{width: 236px;}
+      .join img{display: none;}
+      .nav_close{display: none;}
+      .nav_top a{color: #fff}
+      
+
+
+
     }
 
 
@@ -162,7 +189,7 @@
             </div>
             <div class="logo_box">
               <a href="index.html">
-              <img src="./images/logo-white (1).png" alt="로고">
+              <img src="./images/logo-white.png" alt="로고">
             </a>
             </div>
             <div class="buger_box">
@@ -245,7 +272,7 @@
               </ul>
             </article>
             <article class="nav_banner">
-
+              <img src="./images/hyundea_4.jpg" alt="">
             </article>
           </nav>
         </div>
@@ -317,20 +344,22 @@
 
     // === 티켓클릭 === //
     $('.ticket_box').on('click',function(){
-      confirm('로그인 후 이용이 가능합니다. \n 로그인 후 사용가능합니다.');
+      confirm('로그인후 이용가능합니다. \n로그인 하시겠습니까?');
     })
 
 
     // === 네비호출 / 닫기 === //
     $('.buger_box').on('click',function(){
-      $('nav').show();
+      $('nav').css('width',300);
+      $('html,body').addClass('not_scroll');
     })
     $('.nav_close').on('click',function(){
-      $('nav').hide();
+      $('nav').css('width',0);
+      $('html,body').removeClass('not_scroll');
     })
 
 
-    // 윈도우 스크롤 이벤트 //
+    // === 윈도우 스크롤 이벤트 === //
     $(window).on('scroll',function(){
       var scrTop = $(window).scrollTop();
       var hrd = $('.header')
