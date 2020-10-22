@@ -63,12 +63,25 @@
     .container{width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px;}
     .content{padding: 40px 0;}
 
+  /* 타이틀 텍스트 */
+    .title01{font-weight: 800; font-size: 2rem;}
+    .title02{font-weight: 800; font-size: 1.6rem;}
+    .title03{font-weight: 800; font-size: 1.2rem;}
+    .title04{font-weight: 800;}
 
+  /* 내용 텍스트 */
+    .con_txt01{font-size: 1.6rem;}
+    .con_txt02{font-size: 1.2rem;}
+    .con_txt03{font-size: 0.8rem;}
+    .con_txt04{font-size: 0.6rem;}
+
+
+  /* 스킵메뉴 */
     .skip_menu{position: fixed; left: 0; top: -999999px; z-index: 1; width: 100%;padding: 10px; background-color: #503396; text-align: center;}
     .skip_menu.active{top: 0;}
     .skip_menu>a{display: inline-block; border: 2px solid #fff; border-radius: 3px; padding: 6px 10px; color: #fff;}
 
-
+  /* 팝업 */
     .popup{position:fixed; width:100vw; height:100vh; z-index:2; background-color:rgba(0,0,0,0.8); display: none;}
     .popup_content{width:400px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);}
     .popup_form{padding:10px; background-color:#fff;}
@@ -77,7 +90,7 @@
 
     .banner01, .banner03{background-color: #4f79a9; display: none;}
 
-
+  /* 헤더 */
     .header{width: 100%; background-color: rgba(0,0,0,0); transition: 0.3s; position: fixed; z-index: 1;}
     .header .content{padding: 20px;}
     .header.active{background-color: rgba(0,0,0,0.9);}
@@ -87,7 +100,7 @@
     .logo_box{width: 120px;}
     .buger_box{width: 25px; cursor: pointer;}
 
-
+  /* 네비 */
     nav{position: fixed; right: 0; top: 0; z-index: 11; width: 0; height: 100vh; background-color: #fff;}
     
     .nav_top{background-color: #160f2b; position: absolute; left: 0; top: 0; z-index: 12; width: 100%;}
@@ -98,7 +111,7 @@
     .join a{color: #fff;}
     .join img{width: 15px;}
     
-    .nav_main{padding: 148px 20px 20px; height: 100%; overflow-y: scroll;}
+    .nav_main{height: 100%; margin-bottom: 100px; padding: 148px 20px 100px; overflow-y: scroll;}
     .nav_main::-webkit-scrollbar,html::-webkit-scrollbar,body::-webkit-scrollbar{display: none;}
     .nav_main,html,body{-ms-overflow-style: none;}
 
@@ -114,7 +127,9 @@
     .nav_banner{position: absolute; left: 0; bottom: 0; z-index: 12; width: 100%;}
 
 
-    .box_office{height: 500px; background-color: green;}
+  /* 박스오피스 */
+    .box_office{background-color: green;}
+
     .event{height: 500px; background-color: blue;}
     .curation{height: 500px; background-color: yellow;}
     .mega_info{height: 500px; background-color: magenta;}
@@ -266,7 +281,14 @@
         </div>
       </div>
     </header>
-    <section class="section box_office" id="box_office"></section>
+    <!-- 박스 오피스 영역 -->
+    <section class="section box_office" id="box_office">
+      <div class="container">
+        <div class="content">
+
+        </div>
+      </div>
+    </section>
     <section class="section event"></section>
     <section class="section curation"></section>
     <section class="section mega_info"></section>
