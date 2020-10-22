@@ -128,9 +128,17 @@
 
 
   /* 박스오피스 */
-    .box_office{position: relative;}
-    .box_office::before{content: ''; display: block; width: 100%; height: 100%; background-image: url('./images/bg-origin.png'); background-size: cover; position: absolute; left: 0; top: 0; z-index: 10;}
-    .box_office .container{position: relative; z-index: 11;}
+    .box_office{background-color: #0e0a20 ; padding-top:80px;}
+    .box_office{color:rgba(255,255,255,0.8);}
+    .box_office h2{padding-bottom: 20px; line-height:2.2rem; font-weight: 200;}
+    .box_office .hastag{overflow: hidden; margin-bottom: 20px;}
+    .box_office .hastag ul{width: 300%;}
+    .box_office .hastag ul li{display: inline-block; padding-right: 10px;}
+    .box_office .hastag a{color: rgba(255,255,255,0.8); font-weight: 200; text-decoration: none; font-size: 0.8rem;}
+    .box_office .hastag a.active{color: rgba(255,255,255,1); font-weight :800; text-decoration: underline;}
+    .box_office .swiper-slide{width: 200px; height: 300px; background-color: #fff;}
+    .arr_box{width: 8px;}
+
 
     .event{height: 500px; background-color: blue;}
     .curation{height: 500px; background-color: yellow;}
@@ -290,18 +298,20 @@
           <h2 class="title01">
             선명한 화면과 섬세한 소리로<br>당신께 최고의 영화를
           </h2>
-          <ul class="hastag">
-            <li><a href="#" class="con_txt03">#박스오피스</a></li>
-            <li><a href="#" class="con_txt03">#상영예정</a></li>
-            <li><a href="#" class="con_txt03">#돌비시네마</a></li>
-            <li><a href="#" class="con_txt03">#단독</a></li>
-            <li><a href="#" class="con_txt03">#오리지널티켓</a></li>
-            <li><a href="#" class="con_txt03">#빵원티켓+</a></li>
-            <li><a href="#" class="con_txt03">#클소</a></li>
-            <li><a href="#" class="con_txt03">#필소</a></li>
-          </ul>
-          <div class="swiper_container">
-            <!-- <div class="swiper-wrapper">
+          <div class="hastag">
+            <ul>
+              <li><a href="#" class="con_txt03">#박스오피스</a></li>
+              <li><a href="#" class="con_txt03">#상영예정</a></li>
+              <li><a href="#" class="con_txt03">#돌비시네마</a></li>
+              <li><a href="#" class="con_txt03">#단독</a></li>
+              <li><a href="#" class="con_txt03">#오리지널티켓</a></li>
+              <li><a href="#" class="con_txt03">#빵원티켓+</a></li>
+              <li><a href="#" class="con_txt03">#클소</a></li>
+              <li><a href="#" class="con_txt03">#필소</a></li>
+            </ul>
+          </div>
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
               <div class="swiper-slide">1</div>
               <div class="swiper-slide">2</div>
               <div class="swiper-slide">3</div>
@@ -311,7 +321,7 @@
               <div class="swiper-slide">7</div>
               <div class="swiper-slide">8</div>
               <div class="swiper-slide">9</div>
-              <div class="swiper-slide">10</div>
+              <div class="swiper-slide">0</div>
               <div class="swiper-slide">11</div>
               <div class="swiper-slide">12</div>
               <div class="swiper-slide">13</div>
@@ -322,9 +332,7 @@
               <div class="swiper-slide">18</div>
               <div class="swiper-slide">19</div>
               <div class="swiper-slide">20</div>
-              
-
-            </div> -->
+            </div>
           </div>
           <p class="con_txt_04">
             더 많은 영화보기
@@ -429,10 +437,25 @@
     })
 
     
-    var swiper = new swiper('swiper_container');
+    // 박스오피스 해시태그 //
+    $('.hastag a').on('click',function(){
+      $('.hastag a').removeClass('active');
+      $(this).addClass('active');
+    })
 
 
-
+    // swiper-slide //
+    var swiper = new Swiper('.swiper-container',{
+        spaceBetween:30,
+        slidesPerView:'auto',
+        speed:50
+      });
+  
+  
+  
+  
+  
+  
   })
 
   </script>
